@@ -82,7 +82,7 @@ Available Sources:
         end
 
         # TODO: Catch some exceptions?
-      rescue ::ExchangeRatesGenerator::ExchangeRatesError => e
+      rescue ::ExchangeRatesGenerator::Errors::ExchangeRatesError => e
         stdout.puts e.message
         exit
       end

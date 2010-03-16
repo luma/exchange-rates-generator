@@ -9,24 +9,6 @@ require 'logger'
 module ExchangeRatesGenerator
   VERSION = '0.0.1'
   
-  class ExchangeRatesError < StandardError
-  end
-
-  class NotFoundError < ExchangeRatesError
-  end
-
-  class UnknownError < ExchangeRatesError
-  end
-
-  class MalformedSourceClass < ExchangeRatesError
-  end
-  
-  class CurrencyNotAvailable < ExchangeRatesError
-  end
-  
-  class MalformedFormatterClass < ExchangeRatesError
-  end
-  
   def self.log_to=(l)
     @log_to = l
   end
