@@ -1,0 +1,7 @@
+
+For more information on exchange-rates-generator, see http://exchange-rates-generator.rubyforge.org
+
+NOTE: Change this information in PostInstall.txt 
+You can also delete it if you don't want it.
+
+

@@ -1,0 +1,16 @@
+History.txt
+Manifest.txt
+PostInstall.txt
+README.rdoc
+Rakefile
+bin/generate_exchange_rates
+lib/exchange-rates-generator.rb
+lib/generate_exchange_rates/cli.rb
+script/console
+script/destroy
+script/generate
+spec/exchange-rates-generator_spec.rb
+spec/generate_exchange_rates_cli_spec.rb
+spec/spec.opts
+spec/spec_helper.rb
+tasks/rspec.rake

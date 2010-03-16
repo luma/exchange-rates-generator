@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+#
+#  Created by Rolly on 2010-3-16.
+#  Copyright (c) 2010. All rights reserved.
+
+require 'rubygems'
+require File.expand_path(File.dirname(__FILE__) + "/../lib/exchange-rates-generator")
+require "generate_exchange_rates/cli"
+
+GenerateExchangeRates::CLI.execute(STDOUT, ARGV)
