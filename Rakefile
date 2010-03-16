@@ -18,6 +18,7 @@ $hoe = Hoe.spec 'exchange-rates-generator' do
     ['patron','>= 0.4'],
     ['nokogiri','>= 1.4'],
     ['extlib','>= 0.9'],
+    ['money', '>= 2.2.0']
   ]
 end
 
