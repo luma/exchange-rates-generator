@@ -5,6 +5,11 @@ README.rdoc
 Rakefile
 bin/generate_exchange_rates
 lib/exchange-rates-generator.rb
+lib/exchange-rates-generator/formatters/base.rb
+lib/exchange-rates-generator/formatters/ruby.rb
+lib/exchange-rates-generator/formatters/javascript.rb
+lib/exchange-rates-generator/sources/base.rb
+lib/exchange-rates-generator/sources/ecb.rb
 lib/generate_exchange_rates/cli.rb
 script/console
 script/destroy

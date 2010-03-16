@@ -4,23 +4,33 @@
 
 == DESCRIPTION:
 
-FIX (describe your package)
+Generates a classes (or class like things) that can translate currency values in a specific currency to a number of other currencies.
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+* Generates classes (or class like things) for Ruby and Javascript
+* Can support addition languages through custom formatters
+* Supports a currency xml feed from ECB by default, but can support custom exchange rate sources through custom Source classes.
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+Generate a Ruby class for convert NZD	amounts to other currencies, using the default ECB source.
+bq. ./generate_exchange_rates -c nzd -f ruby
+
+Generate a Ruby library for convert NZD	amounts to other currencies, using the default ECB source.
+bq. ./generate_exchange_rates -c usd -f javascript
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+* Ruby :-)
+* Extlib Gem
+* Money Gem
+* Patron Gem
+* Nokogiri Gem
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+* sudo gem install exchange-rates-generator
 
 == LICENSE:
 
