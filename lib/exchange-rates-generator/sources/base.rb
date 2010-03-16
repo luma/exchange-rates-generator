@@ -30,7 +30,7 @@ module ExchangeRatesGenerator
 
           adjusted_currency = currency_code.to_s.upcase.to_sym          
           unless rates.include?(adjusted_currency)
-            raise CurrencyNotAvailable, "#{adjusted_currency.to_s} was not available in this Source (#{self.to_s}), please use a different Source"
+            raise Errors::CurrencyNotAvailable, "#{adjusted_currency.to_s} was not available in this Source (#{self.to_s}), please use a different Source"
           end
 
           adjusted_rates = {}

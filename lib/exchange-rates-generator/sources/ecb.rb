@@ -33,10 +33,10 @@ module ExchangeRatesGenerator
 
           if ['404', '405', '406', '410'].include?(http_response.status)
             # Not Found, auth failure, etc. Some form of it wasn't there.
-            raise NotFoundError, "The exchange rate source file seems to be unavailable"
+            raise Errors::NotFoundError, "The exchange rate source file seems to be unavailable"
           elsif !['1', '2'].include?(http_response.status.to_s[0..0])
             # Other non-specific failures.
-            raise UnexpectedError, "Error while making a request to #{source}\nResponse: #{http_response.inspect}"
+            raise Errors::UnexpectedError, "Error while making a request to #{source}\nResponse: #{http_response.inspect}"
           end
 
           convert_to_exchange_rate_hash(http_response.body)
