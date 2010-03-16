@@ -10,6 +10,7 @@ Partially sponsored by the kind folks at Intercity (http://www.intercity.co.nz).
 
 == FEATURES/PROBLEMS:
 
+* No tests yet :-(
 * Generates classes (or class like things) for Ruby and Javascript
 * Can support addition languages through custom formatters
 * Supports a currency xml feed from ECB by default, but can support custom exchange rate sources through custom Source classes.
