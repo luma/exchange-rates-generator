@@ -7,7 +7,7 @@ require 'extlib'
 require 'logger'
 
 module ExchangeRatesGenerator
-  VERSION = '0.0.1'
+  VERSION = '0.0.3'
   
   def self.log_to=(l)
     @log_to = l
