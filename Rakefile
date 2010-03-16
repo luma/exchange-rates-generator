@@ -12,7 +12,7 @@ Hoe.plugin :newgem
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 $hoe = Hoe.spec 'exchange-rates-generator' do
   self.developer 'Rolly', 'rolly@luma.co.nz'
-  self.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
+#  self.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
   self.rubyforge_name       = self.name # TODO this is default value
   # self.extra_deps         = [['activesupport','>= 2.0.2']]
 
