@@ -1,10 +1,12 @@
 = exchange-rates-generator
 
-* http://github.com/#{github_username}/#{project_name}
+* http://github.com/luma/exchange-rates-generator
 
 == DESCRIPTION:
 
 Generates a classes (or class like things) that can translate currency values in a specific currency to a number of other currencies.
+
+Partially sponsored by the kind folks at Intercity (http://www.intercity.co.nz).
 
 == FEATURES/PROBLEMS:
 
