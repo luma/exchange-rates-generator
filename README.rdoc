@@ -15,10 +15,13 @@ Generates a classes (or class like things) that can translate currency values in
 == SYNOPSIS:
 
 Generate a Ruby class for convert NZD	amounts to other currencies, using the default ECB source.
-bq. ./generate_exchange_rates -c nzd -f ruby
+
+<tt>./generate_exchange_rates -c nzd -f ruby</tt>
+
 
 Generate a Ruby library for convert NZD	amounts to other currencies, using the default ECB source.
-bq. ./generate_exchange_rates -c usd -f javascript
+
+<tt>./generate_exchange_rates -c usd -f javascript</tt>
 
 == REQUIREMENTS:
 
