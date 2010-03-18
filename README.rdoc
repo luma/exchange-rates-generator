@@ -23,7 +23,7 @@ Generate a Ruby class for converting NZD	amounts to other currencies, using the 
 
 This results in a file called "nzd_exchange_rates.rb" being created in the current working dir.
 
-Generate a Javascript library for converting NZD	amounts to other currencies, using the default ECB source.
+Generate a Javascript library for converting USD	amounts to other currencies, using the default ECB source.
 
 <tt>generate_exchange_rates -c usd -f javascript</tt>
 
