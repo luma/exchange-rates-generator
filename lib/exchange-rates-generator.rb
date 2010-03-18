@@ -7,7 +7,7 @@ require 'extlib'
 require 'logger'
 
 module ExchangeRatesGenerator
-  VERSION = '0.0.5'
+  VERSION = '0.0.6'
   
   def self.log_to=(l)
     @log_to = l
@@ -29,6 +29,8 @@ module ExchangeRatesGenerator
     end
   end
 end
+
+require 'exchange-rates-generator/errors'
 
 require 'exchange-rates-generator/formatters/base'
 require 'exchange-rates-generator/formatters/ruby'

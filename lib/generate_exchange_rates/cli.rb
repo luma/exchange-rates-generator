@@ -73,8 +73,8 @@ Available Sources:
         exit
       end
 
-      path = options[:path]
-      path ||= "exchange_rates.#{formatter.default_extension.to_s}"
+      path = options[:path] || "."
+      path = File.join(path, "#{options[:currency].to_s.downcase}_exchange_rates.#{formatter.default_extension.to_s}")
 
       begin
         File.open(path, 'w') do |file|
