@@ -22,7 +22,7 @@ Generate a Ruby class for convert NZD	amounts to other currencies, using the def
 <tt>./generate_exchange_rates -c nzd -f ruby</tt>
 
 
-Generate a Ruby library for convert NZD	amounts to other currencies, using the default ECB source.
+Generate a Javascript library for convert NZD	amounts to other currencies, using the default ECB source.
 
 <tt>./generate_exchange_rates -c usd -f javascript</tt>
 
