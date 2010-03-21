@@ -58,20 +58,36 @@ exchange_rates.#{formatter_classname} = function() {
       return '#{@currency.to_s}';
     },
 
+    // Retrieves an Array of all the supported currency codes.
+    //
+    // @return [Array] All supported currency codes
     supported_currencies : function() {
       return [
 #{rates.keys.collect {|c| "        \"#{c}\"" }.join(",\n") }
       ];
     },
 
+    // Retrieves an exchange rate.
+    //
+    // @param [String, #toString] The target currency that we want the exchange rate for.
+    // @return [Float] The exchange rate
     get : function(target_currency) {
       return this.rates()[normalise_code(target_currency)];
     },
 
+    // Retrieves a human readible name for a currency code
+    //
+    // @param [String, #toString] The target currency that we want the name for.
+    // @return [String] The human readible version of the currency code.
     name_for_code : function(code) {
       return this.names_and_codes()[normalise_code(code)];
     },
 
+    // Convert +amount+ from base_currency to +currency+.
+    //
+    // @param [Float, #to_f] Amount to convert.
+    // @param [String, #to_s] The currency we want to convert to.
+    // @return [Float] The +amount+ converted to +currency+.
     convert : function(amount, target_currency) {
       var rate = this.get(target_currency);
       if ( !rate ) {
@@ -81,6 +97,9 @@ exchange_rates.#{formatter_classname} = function() {
       return rate * parseFloat(amount, 10);
     },
 
+    // The exchange rates relative to base_currency.
+    //
+    // @return [Hash] The exchange rates relative to base_currency.
     rates : function() {
       return {
         "#{@currency.to_s}"    : 1.0,

@@ -47,13 +47,12 @@ module ExchangeRates
       def base_currency
         :#{@currency.to_s}
       end
-    
+
+      # Retrieves an Array of all the supported currency codes.
+      #
+      # @return [Array] All supported currency codes
       def supported_currencies
         rates.keys
-      end
-
-      def name_for_code(code)
-        names_and_codes[normalise_code(code)]
       end
 
       # Wires this currency up to use with the Money Gem. It sets it as the default
@@ -80,6 +79,14 @@ module ExchangeRates
       # @return [Float] The exchange rate
       def get(target_currency)
         rates[normalise_code(target_currency)]
+      end
+      
+      # Retrieves a human readible name for a currency code
+      #
+      # @param [String, #toString] The target currency that we want the exchange rate for.
+      # @return [String] The human readible version of the currency code.
+      def name_for_code(code)
+        names_and_codes[normalise_code(code)]
       end
       
       # Convert +amount+ from base_currency to +currency+.
