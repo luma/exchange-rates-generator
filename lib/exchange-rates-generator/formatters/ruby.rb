@@ -51,7 +51,11 @@ module ExchangeRates
       def supported_currencies
         rates.keys
       end
-    
+
+      def name_for_code(code)
+        names_and_codes[normalise_code(code)]
+      end
+
       # Wires this currency up to use with the Money Gem. It sets it as the default
       # currency.
       #
@@ -75,7 +79,7 @@ module ExchangeRates
       # @param [String, #to_s] The target currency that we want the exchange rate for.
       # @return [Float] The exchange rate
       def get(target_currency)
-        rates[target_currency.to_s.upcase.to_sym]
+        rates[normalise_code(target_currency)]
       end
       
       # Convert +amount+ from base_currency to +currency+.
@@ -118,7 +122,17 @@ module ExchangeRates
       def rates
         {
           :#{@currency.to_s}    => 1.0,
-        #{rates.to_a.collect { |rate| "\s\s:#{rate[0].to_s}    => #{rate[1].to_s}" }.join(",\n       ")}
+#{rates.to_a.collect { |rate| "          :#{rate[0].to_s}    => #{rate[1].to_s}" }.join(",\n")}
+        }
+      end
+      
+      # Retrieves a Hash of code => name. Where name is the more human readable version of the currency code.
+      #
+      # @return [Hash] The Hash of codes and names.
+      def names_and_codes
+        {
+          :#{@currency.to_s}    => "#{Currencies.get_name(@currency)}",
+#{rates.to_a.collect { |rate| "          :#{rate[0].to_s}    => \"#{Currencies.get_name(rate[0])}\"" }.join(",\n")}
         }
       end
         EOS
@@ -126,6 +140,11 @@ module ExchangeRates
       
       def footer
         <<-EOS
+      private
+
+      def normalise_code(code)
+        code.to_s.upcase.to_sym
+      end
     end
   end
 end # module ExchangeRates

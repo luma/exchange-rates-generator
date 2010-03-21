@@ -28,7 +28,7 @@ module GenerateExchangeRates
                 "This is the base currency you wish to convert from.") { |arg| options[:currency] = arg }
         opts.on("-p", "--path PATH", String,
                 "The is the default output path for the exchange rate converter.",
-                "Default: ~/exchange_rates.[format extension]") { |arg| options[:path] = arg }
+                "Default: '.'") { |arg| options[:path] = arg }
         opts.on("-s", "--source SOURCE", String,
                 "This is the name of the desired Source to retrieve the currency data from.",
                 "To get a list of all available Sources using the -l or --list flags.",

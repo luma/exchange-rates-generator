@@ -44,6 +44,10 @@ if ( typeof(exchange_rates) === 'undefined' ) {
 //
 // Generated using the exchange-rates-generator Ruby Gem.
 exchange_rates.#{formatter_classname} = function() {
+  function normalise_code(code) {
+    return code.toString().toUpperCase();    
+  }
+
         EOS
       end
 
@@ -61,7 +65,11 @@ exchange_rates.#{formatter_classname} = function() {
     },
 
     get : function(target_currency) {
-      return this.rates()[target_currency.toUpperCase()];
+      return this.rates()[normalise_code(target_currency)];
+    },
+
+    name_for_code : function(code) {
+      return this.names_and_codes()[normalise_code(code)];
     },
 
     convert : function(amount, target_currency) {
@@ -78,8 +86,17 @@ exchange_rates.#{formatter_classname} = function() {
         "#{@currency.to_s}"    : 1.0,
 #{rates.to_a.collect { |rate| "        \"#{rate[0].to_s}\"    : #{rate[1].to_s}" }.join(",\n")}
       }
+    },
+    
+    // Retrieves a Hash of code => name. Where name is the more human readable version of the currency code.
+    //
+    // @return [Hash] The Hash of codes and names.
+    names_and_codes : function() {
+      return {
+        "#{@currency.to_s}"    : "#{Currencies.get_name(@currency)}",
+#{rates.to_a.collect { |rate| "        \"#{rate[0].to_s}\"    : \"#{Currencies.get_name(rate[0])}\"" }.join(",\n")}
+      };
     }
-
   };
         EOS
       end
