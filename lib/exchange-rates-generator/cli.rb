@@ -1,6 +1,6 @@
 require 'optparse'
 
-module GenerateExchangeRates
+module ExchangeRatesGenerator
   class CLI
     def self.execute(stdout, arguments=[])
 
@@ -39,8 +39,8 @@ module GenerateExchangeRates
                 "Default: ruby") { |arg| options[:format] = arg.upcase }
 
         opts.on("-l", "--list", "List all available formats and sources") do
-          formatters = ExchangeRatesGenerator::Formatters::Base.formatters.collect {|f| "\s\s#{Extlib::Inflection.demodulize(f.to_s)}: #{f.description} (*.#{f.default_extension.to_s})" }.join("\n")
-          sources   = ExchangeRatesGenerator::Sources::Base.sources.collect {|s| "\s\s#{Extlib::Inflection.demodulize(s.to_s)}: #{s.description}" }.join("\n")
+          formatters = ExchangeRatesGenerator::Formatters::Base.formatters.collect {|f| "\s\s#{f.to_s.demodulize}: #{f.description} (*.#{f.default_extension.to_s})" }.join("\n")
+          sources   = ExchangeRatesGenerator::Sources::Base.sources.collect {|s| "\s\s#{s.to_s.demodulize}: #{s.description}" }.join("\n")
 
           stdout.puts <<-EOS
 Available Formats:

@@ -1,7 +1,11 @@
 module ExchangeRatesGenerator
   module Sources
     def self.get(source_name)
-      Object.full_const_get([self.to_s, Extlib::Inflection.classify(source_name.to_s)].join("::"))
+      begin
+        ExchangeRatesGenerator::Sources.const_get( source_name.to_s.demodulize.camelize )
+      rescue NameError => e
+        nil
+      end
     end
 
     class Base

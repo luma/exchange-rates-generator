@@ -1,10 +1,10 @@
 require File.join(File.expand_path(File.dirname(__FILE__)), 'spec_helper.rb')
-require 'generate_exchange_rates/cli'
+require 'exchange-rates-generator/cli'
 
-describe GenerateExchangeRates::CLI, "execute" do
+describe ExchangeRatesGenerator::CLI, "execute" do
   before(:each) do
     @stdout_io = StringIO.new
-    GenerateExchangeRates::CLI.execute(@stdout_io, [])
+    ExchangeRatesGenerator::CLI.execute(@stdout_io, [])
     @stdout_io.rewind
     @stdout = @stdout_io.read
   end

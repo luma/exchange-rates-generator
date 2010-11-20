@@ -1,15 +1,13 @@
 # -*- encoding : utf-8 -*-
-$:.unshift(File.dirname(__FILE__)) unless
-  $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
 require 'patron'
 require 'nokogiri'
-require 'extlib'
 require 'logger'
 
+require 'active_support/core_ext/object/blank'
+require 'active_support/inflector'
+
 module ExchangeRatesGenerator
-  VERSION = '0.0.9'
-  
   def self.log_to=(l)
     @log_to = l
   end

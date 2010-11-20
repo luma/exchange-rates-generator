@@ -1,7 +1,5 @@
 # -*- encoding : utf-8 -*-
-
-require 'patron'
-require 'nokogiri'
+require 'exchange-rates-generator'
 
 namespace :currency do 
   desc "Generate a new currency codes cache"
@@ -39,14 +37,14 @@ namespace :currency do
         name = parse_field(name)
 
         unless (entity.blank? || code.blank?)
-          entity = Extlib::Inflection.humanize(entity).gsub(/\b('?[a-z])/) { $1.capitalize }
+          entity = entity.humanize.gsub(/\b('?[a-z])/) { $1.capitalize }
 
           # Handle multiple currency codes per entity (e.g. US Dollar, US Dollar (Same day), and US Dollar (Next day))
           codes = code.split(/\n+/)
           names = name.split(/\n+/)
 
           0.upto(codes.length - 1) do |i|
-            name = Extlib::Inflection.humanize(names[i]).gsub(/\b('?[a-z])/) { $1.capitalize }
+            name = names[i].humanize.gsub(/\b('?[a-z])/) { $1.capitalize }
             currency_hash[codes[i].to_s] ||= [name, []]
             currency_hash[codes[i].to_s][1] << entity
           end      

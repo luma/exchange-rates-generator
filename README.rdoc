@@ -17,7 +17,7 @@ Partially sponsored by the kind folks at Intercity (http://www.intercity.co.nz).
 
 == SYNOPSIS:
 
-Generate a Ruby class for converting NZD	amounts to other currencies, using the default ECB source.
+Generate a Ruby class for converting NZD amounts to other currencies, using the default ECB source.
 
 <tt>generate_exchange_rates -c nzd -f ruby</tt>
 

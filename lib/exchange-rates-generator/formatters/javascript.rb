@@ -26,7 +26,7 @@ module ExchangeRatesGenerator
       protected
 
       def formatter_classname
-        @formatter_classname ||= Extlib::Inflection.underscore(@currency.to_s)
+        @formatter_classname ||= @currency.to_s.underscore
       end
 
       def header

@@ -1,9 +1,13 @@
 module ExchangeRatesGenerator
   module Formatters
     def self.get(formatter_name)
-      Object.full_const_get([self.to_s, Extlib::Inflection.classify(formatter_name.to_s)].join("::"))
+      begin
+        ExchangeRatesGenerator::Formatters.const_get( formatter_name.to_s.demodulize.camelize )
+      rescue NameError => e
+        nil
+      end
     end
-    
+
     class Base
       attr_reader :currency, :rates
 
@@ -35,7 +39,7 @@ module ExchangeRatesGenerator
       protected
 
       def formatter_classname
-        @formatter_classname ||= Extlib::Inflection.classify(@currency.to_s)
+        @formatter_classname ||= @currency.to_s.camelize
       end
     end # class Base
   end # module Formatters
