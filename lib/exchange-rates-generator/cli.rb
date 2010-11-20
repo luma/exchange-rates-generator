@@ -62,13 +62,13 @@ Available Sources:
         end
       end
 
-      formatter = ::ExchangeRatesGenerator::Formatters.get(options[:format].to_sym)
+      formatter = ::ExchangeRatesGenerator::Formatters.get(options[:format].downcase)
       unless formatter
         stdout.puts "Sorry, I couldn't find a formatter for the format '#{options[:format]}', use the -l or --list flag to see the complete list of available formats."
         exit
       end
 
-      source = ::ExchangeRatesGenerator::Sources.get(options[:source].to_sym)
+      source = ::ExchangeRatesGenerator::Sources.get(options[:source].downcase)
       unless source
         stdout.puts "Sorry, I couldn't find the source '#{options[:source]}', use the -l or --list flag to see the complete list of available sources."
         exit
