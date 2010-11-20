@@ -14,10 +14,11 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "exchange-rates-generator"
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  s.require_paths = ["lib"]
+  s.files               = `git ls-files`.split("\n")
+  s.test_files          = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.default_executable  = 'bin/generate_exchange_rates'
+  s.executables         = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.require_paths       = ["lib"]
   
   s.add_dependency 'patron', '~> 0.4.10'
   s.add_dependency 'nokogiri', '~> 1.4.4'
