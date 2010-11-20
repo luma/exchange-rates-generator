@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require File.join(File.expand_path(File.dirname(__FILE__)), 'spec_helper.rb')
 require 'generate_exchange_rates/cli'
 
 describe GenerateExchangeRates::CLI, "execute" do

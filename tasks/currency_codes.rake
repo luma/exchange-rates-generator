@@ -1,10 +1,7 @@
+# -*- encoding : utf-8 -*-
+
 require 'patron'
 require 'nokogiri'
-require 'activesupport' # <= Just for mb_chars (multibyte) support
-require 'ruby-debug'
-
-$KCODE = 'u'
-require 'jcode'
 
 namespace :currency do 
   desc "Generate a new currency codes cache"
@@ -69,34 +66,35 @@ namespace :currency do
     end
 
     currencies = <<-EOS
-  module ExchangeRatesGenerator
-    # Generated using "rake currency:generate_currency_codes" from within the exchange-rates-generator gem.
-    # Scraped from http://www.iso.org/iso/support/currency_codes_list-1.htm
-    # These are utf-8 so ensure that you correctly setup the necessary encodings in your app
-    module Currencies
-      def self.get(code)
-        return nil if RAW[noramalise_code(code)] == nil
-        name, entity = RAW[noramalise_code(code)]
-        Currency.new(noramalise_code(code).to_sym, name, entity)
-      end
+# -*- encoding : utf-8 -*-
+module ExchangeRatesGenerator
+  # Generated using "rake currency:generate_currency_codes" from within the exchange-rates-generator gem.
+  # Scraped from http://www.iso.org/iso/support/currency_codes_list-1.htm
+  # These are utf-8 so ensure that you correctly setup the necessary encodings in your app
+  module Currencies
+    def self.get(code)
+      return nil if RAW[noramalise_code(code)] == nil
+      name, entity = RAW[noramalise_code(code)]
+      Currency.new(noramalise_code(code).to_sym, name, entity)
+    end
 
-      def self.get_name(code)
-        return nil if RAW[noramalise_code(code)] == nil
-        RAW[noramalise_code(code)][0]
-      end
+    def self.get_name(code)
+      return nil if RAW[noramalise_code(code)] == nil
+      RAW[noramalise_code(code)][0]
+    end
 
-      private
+    private
 
-      def self.noramalise_code(code)
-        code.to_s.upcase
-      end
+    def self.noramalise_code(code)
+      code.to_s.upcase
+    end
 
-      RAW = {
+    RAW = {
 #{currencies.collect {|c| "          #{c}" }.join(",\n")}
-      }.freeze
+    }.freeze
 
-    end # module Currencies
-  end # module ExchangeRatesGenerator
+  end # module Currencies
+end # module ExchangeRatesGenerator
     EOS
 
     output_path = File.join(File.dirname(File.dirname(__FILE__)), 'lib/exchange-rates-generator/currencies.rb')
@@ -112,6 +110,6 @@ namespace :currency do
     field.css('a').unlink
 
     # Sanitise whats left...
-    field.inner_html.mb_chars.gsub(/<br\s*\/?>/i, "\n").strip
+    field.inner_html.gsub(/<br\s*\/?>/i, "\n").strip
   end
 end

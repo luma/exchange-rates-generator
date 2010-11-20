@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 $:.unshift(File.dirname(__FILE__)) unless
   $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
@@ -7,7 +8,7 @@ require 'extlib'
 require 'logger'
 
 module ExchangeRatesGenerator
-  VERSION = '0.0.8'
+  VERSION = '0.0.9'
   
   def self.log_to=(l)
     @log_to = l
@@ -30,14 +31,15 @@ module ExchangeRatesGenerator
   end
 end
 
-require 'exchange-rates-generator/errors'
+dir = File.join(File.expand_path(File.dirname(__FILE__)), 'exchange-rates-generator')
+require dir + '/errors'
 
-require 'exchange-rates-generator/currency'
-require 'exchange-rates-generator/currencies'
+require dir + '/currency'
+require dir + '/currencies'
 
-require 'exchange-rates-generator/formatters/base'
-require 'exchange-rates-generator/formatters/ruby'
-require 'exchange-rates-generator/formatters/javascript'
+require dir + '/formatters/base'
+require dir + '/formatters/ruby'
+require dir + '/formatters/javascript'
 
-require 'exchange-rates-generator/sources/base'
-require 'exchange-rates-generator/sources/ecb'
+require dir + '/sources/base'
+require dir + '/sources/ecb'

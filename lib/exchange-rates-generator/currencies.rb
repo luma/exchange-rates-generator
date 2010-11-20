@@ -1,26 +1,27 @@
-  module ExchangeRatesGenerator
-    # Generated using "rake currency:generate_currency_codes" from within the exchange-rates-generator gem.
-    # Scraped from http://www.iso.org/iso/support/currency_codes_list-1.htm
-    # These are utf-8 so ensure that you correctly setup the necessary encodings in your app
-    module Currencies
-      def self.get(code)
-        return nil if RAW[noramalise_code(code)] == nil
-        name, entity = RAW[noramalise_code(code)]
-        Currency.new(noramalise_code(code).to_sym, name, entity)
-      end
+# -*- encoding : utf-8 -*-
+module ExchangeRatesGenerator
+  # Generated using "rake currency:generate_currency_codes" from within the exchange-rates-generator gem.
+  # Scraped from http://www.iso.org/iso/support/currency_codes_list-1.htm
+  # These are utf-8 so ensure that you correctly setup the necessary encodings in your app
+  module Currencies
+    def self.get(code)
+      return nil if RAW[noramalise_code(code)] == nil
+      name, entity = RAW[noramalise_code(code)]
+      Currency.new(noramalise_code(code).to_sym, name, entity)
+    end
 
-      def self.get_name(code)
-        return nil if RAW[noramalise_code(code)] == nil
-        RAW[noramalise_code(code)][0]
-      end
+    def self.get_name(code)
+      return nil if RAW[noramalise_code(code)] == nil
+      RAW[noramalise_code(code)][0]
+    end
 
-      private
+    private
 
-      def self.noramalise_code(code)
-        code.to_s.upcase
-      end
+    def self.noramalise_code(code)
+      code.to_s.upcase
+    end
 
-      RAW = {
+    RAW = {
           'AED' => ["Uae Dirham", ["United Arab Emirates"]],
           'AFN' => ["Afghani", ["Afghanistan"]],
           'ALL' => ["Lek", ["Albania"]],
@@ -70,17 +71,16 @@
           'EGP' => ["Egyptian Pound", ["Egypt"]],
           'ERN' => ["Nakfa", ["Eritrea"]],
           'ETB' => ["Ethiopian Birr", ["Ethiopia"]],
-          'EUR' => ["Euro", ["Åland Islands", "Andorra", "Austria", "Belgium", "Cyprus", "Finland", "France", "French Guiana", "French Southern Territories", "Germany", "Greece", "Guadeloupe", "Holy See (Vatican City State)", "Ireland", "Italy", "Luxembourg", "Malta", "Martinique", "Mayotte", "Monaco", "Montenegro", "Netherlands", "Portugal", "RÉunion", "Saint-BarthÉlemy", "Saint Martin", "Saint Pierre And Miquelon", "San Marino", "Slovakia", "Slovenia", "Spain"]],
+          'EUR' => ["Euro", ["Åland Islands", "Andorra", "Austria", "Belgium", "Cyprus", "Finland", "France", "French Guiana", "French Southern Territories", "Germany", "Greece", "Guadeloupe", "Holy See (Vatican City State)", "Ireland", "Italy", "Luxembourg", "Malta", "Martinique", "Mayotte", "Monaco", "Montenegro", "Netherlands", "Portugal", "RÉunion", "Saint-BarthÉlemy", "Saint Martin", "Saint Pierre And Miquelon", "San Marino", "Slovakia", "Slovenia", "Spain", "Vatican City State (Holy See)"]],
           'FJD' => ["Fiji Dollar", ["Fiji"]],
           'FKP' => ["Falkland Islands Pound", ["Falkland Islands (Malvinas)"]],
-          'GBP' => ["Pound Sterling", ["Guernsey", "Jersey", "United Kingdom"]],
+          'GBP' => ["Pound Sterling", ["Guernsey", "Isle Of Man", "Jersey", "United Kingdom"]],
           'GEL' => ["Lari", ["Georgia"]],
           'GHS' => ["Cedi", ["Ghana"]],
           'GIP' => ["Gibraltar Pound", ["Gibraltar"]],
           'GMD' => ["Dalasi", ["Gambia"]],
           'GNF' => ["Guinea Franc", ["Guinea"]],
           'GTQ' => ["Quetzal", ["Guatemala"]],
-          'GWP' => ["Guinea-Bissau Peso", ["Guinea-Bissau"]],
           'GYD' => ["Guyana Dollar", ["Guyana"]],
           'HKD' => ["Hong Kong Dollar", ["Hong Kong"]],
           'HNL' => ["Lempira", ["Honduras"]],
@@ -153,7 +153,7 @@
           'SDG' => ["Sudanese Pound", ["Sudan"]],
           'SEK' => ["Swedish Krona", ["Sweden"]],
           'SGD' => ["Singapore Dollar", ["Singapore"]],
-          'SHP' => ["Saint Helena Pound", ["Saint Helena"]],
+          'SHP' => ["Saint Helena Pound", ["Saint Helena, Ascension And Tristan Da Cunha"]],
           'SLL' => ["Leone", ["Sierra Leone"]],
           'SOS' => ["Somali Shilling", ["Somalia"]],
           'SRD' => ["Surinam Dollar", ["Suriname"]],
@@ -183,15 +183,27 @@
           'VUV' => ["Vatu", ["Vanuatu"]],
           'WST' => ["Tala", ["Samoa"]],
           'XAF' => ["Cfa Franc Beac", ["Cameroon", "Central African Republic", "Chad", "Congo", "Equatorial Guinea", "Gabon"]],
+          'XAG' => ["Silver", [" "]],
+          'XAU' => ["Gold", ["Entity Not Applicable"]],
+          'XBA' => ["Bond Markets Units European Composite Unit (Eurco)", [" "]],
+          'XBB' => ["European Monetary Unit (E.M.U.-6)", [" "]],
+          'XBC' => ["European Unit Of Account 9(E.U.A.-9)", [" "]],
+          'XBD' => ["European Unit Of Account 17(E.U.A.-17)", [" "]],
           'XCD' => ["East Caribbean Dollar", ["Anguilla", "Antigua And Barbuda", "Dominica", "Grenada", "Montserrat", "Saint Kitts And Nevis", "Saint Lucia", "Saint Vincent And The Grenadines"]],
           'XDR' => ["Sdr", ["International Monetary Fund (I.M.F)"]],
+          'XFU' => ["Uic-Franc", [" "]],
           'XOF' => ["Cfa Franc Bceao", ["Benin", "Burkina Faso", "CÔte D'ivoire", "Guinea-Bissau", "Mali", "Niger", "Senegal", "Togo"]],
+          'XPD' => ["Palladium", [" "]],
           'XPF' => ["Cfp Franc", ["French Polynesia", "New Caledonia", "Wallis And Futuna"]],
+          'XPT' => ["Platinum", [" "]],
+          'XTS' => ["Codes Specifically Reserved For Testing Purposes", [" "]],
+          'XXX' => ["The Codes Assigned For Transactions Where No Currency Is Involved Are:", [" "]],
           'YER' => ["Yemeni Rial", ["Yemen"]],
           'ZAR' => ["Rand", ["Lesotho", "Namibia", "South Africa"]],
           'ZMK' => ["Zambian Kwacha", ["Zambia"]],
-          'ZWL' => ["Zimbabwe Dollar", ["Zimbabwe"]]
-      }.freeze
+          'ZWL' => ["Zimbabwe Dollar", ["Zimbabwe"]],
+          ' ' => ["No Universal Currency", ["Antarctica", " "]]
+    }.freeze
 
-    end # module Currencies
-  end # module ExchangeRatesGenerator
+  end # module Currencies
+end # module ExchangeRatesGenerator
