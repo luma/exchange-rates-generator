@@ -1,4 +1,5 @@
 require File.join(File.expand_path(File.dirname(__FILE__)), 'spec_helper.rb')
+require "exchange-rates-generator"
 require 'exchange-rates-generator/cli'
 
 describe ExchangeRatesGenerator::CLI, "execute" do
@@ -10,6 +11,6 @@ describe ExchangeRatesGenerator::CLI, "execute" do
   end
   
   it "should print default output" do
-    @stdout.should =~ /To update this executable/
+    @stdout.should =~ /This application can generate helpful classes that can do currency exchange from a single target currency to numerous others./
   end
 end

@@ -15,7 +15,7 @@ module ExchangeRatesGenerator
 
       parser = OptionParser.new do |opts|
         opts.banner = <<-BANNER.gsub(/^          /,'')
-          This application is wonderful because it can generate helpful classes that can do currency exchange from a single target currency to numerous others.
+          This application can generate helpful classes that can do currency exchange from a single target currency to numerous others.
 
           Usage: #{File.basename($0)} [options]
 
@@ -57,7 +57,8 @@ Available Sources:
         opts.parse!(arguments)
 
         if mandatory_options && mandatory_options.find { |option| options[option.to_sym].nil? }
-          stdout.puts opts; exit
+          stdout.puts opts
+          return
         end
       end
 
