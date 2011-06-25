@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'patron', '~> 0.4.10'
   s.add_dependency 'nokogiri', '~> 1.4.4'
   s.add_dependency 'money', '~> 3.1.5'
-  s.add_dependency 'i18n', '~> 0.6.0' # Required for activesupport
+  s.add_dependency 'i18n', '~> 0.5.0' # Required for activesupport
   s.add_dependency 'activesupport', '~> 3.0.7'
 
   s.add_development_dependency "bundler", ">= 1.0.7"
