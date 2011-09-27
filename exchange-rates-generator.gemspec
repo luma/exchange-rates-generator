@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.executables         = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths       = ["lib"]
   
-  s.add_dependency 'patron', '~> 0.4.10'
+  s.add_dependency 'patron', '> 0.4.4'
   s.add_dependency 'nokogiri', '~> 1.4.4'
   s.add_dependency 'money', '~> 3.1.5'
   s.add_dependency 'i18n', '~> 0.5.0' # Required for activesupport

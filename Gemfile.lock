@@ -1,22 +1,22 @@
 PATH
   remote: .
   specs:
-    exchange-rates-generator (0.1.0)
-      activesupport (~> 3.0.3)
-      i18n (~> 0.4.2)
+    exchange-rates-generator (0.1.3)
+      activesupport (~> 3.0.7)
+      i18n (~> 0.5.0)
       money (~> 3.1.5)
       nokogiri (~> 1.4.4)
-      patron (~> 0.4.10)
+      patron (> 0.4.4)
 
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (3.0.3)
+    activesupport (3.0.10)
     diff-lcs (1.1.2)
-    i18n (0.4.2)
+    i18n (0.5.0)
     money (3.1.5)
-    nokogiri (1.4.4)
-    patron (0.4.10)
+    nokogiri (1.4.7)
+    patron (0.4.16)
     rake (0.8.7)
     rcov (0.9.9)
     rspec (2.1.0)
@@ -33,13 +33,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport (~> 3.0.3)
   bundler (>= 1.0.7)
   exchange-rates-generator!
-  i18n (~> 0.4.2)
-  money (~> 3.1.5)
-  nokogiri (~> 1.4.4)
-  patron (~> 0.4.10)
   rake
   rcov
   rspec (= 2.1.0)
